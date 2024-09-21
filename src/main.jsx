@@ -4,7 +4,6 @@ import { restaurants } from "./materials/mock";
 createRoot(document.getElementById("root")).render(
   restaurants.map((restaurant) => (
     <div>
-      {/* 123 */}
       {restaurant.name}
       <h3>Меню</h3>
       <ul>
