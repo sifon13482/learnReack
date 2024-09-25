@@ -1,6 +1,8 @@
 import { createRoot } from "react-dom/client";
-import { restaurants } from "./materials/mock";
+
+import { App } from "./components/app/App";
+// import { App } from "./components/App.jsx";
 
 createRoot(document.getElementById("root")).render(
-
+  <App />
 );
