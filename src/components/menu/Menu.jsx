@@ -12,23 +12,3 @@ export const Menu = ({ menu }) => {
     </div>
   );
 };
-
-/* 
-  return (
-    <div>
-      {name}
-      <h3>Меню</h3>
-      <ul>
-        {menu.map((dish) => (
-          <li>{dish.name}</li>
-        ))}
-      </ul>
-      <h3>Отзывы</h3>
-      <ul>
-        {reviews.map((comment) => (
-          <li>{comment.text}</li>
-        ))}
-      </ul>
-    </div>
-  );
-*/
