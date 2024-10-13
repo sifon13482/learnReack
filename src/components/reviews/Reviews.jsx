@@ -1,3 +1,4 @@
+import { ReviewForm } from "../reviewForm/ReviewForm";
 export const Reviews = ({ reviews }) => {
   if (!reviews.length) return null;
 
@@ -8,6 +9,7 @@ export const Reviews = ({ reviews }) => {
         {reviews.map((comment) => (
           <li>{comment.text}</li>
         ))}
+        <ReviewForm />
       </ul>
     </div>
   );
