@@ -1,5 +1,5 @@
 import { ReviewForm } from "../reviewForm/ReviewForm";
-export const Reviews = ({ reviews }) => {
+export const Reviews = ({reviews}) => {
   if (!reviews.length) return null;
 
   return (
