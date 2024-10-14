@@ -9,6 +9,7 @@ export const Reviews = ({ reviews }) => {
         {reviews.map((comment) => (
           <li>{comment.text}</li>
         ))}
+        <ReviewForm  />
       </ul>
     </div>
   );
