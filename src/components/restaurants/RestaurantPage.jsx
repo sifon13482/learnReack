@@ -4,6 +4,7 @@ import { TitleCafe } from "../titleCafe/TitleCafe";
 import { useState } from "react";
 import { restaurants } from "../../constants/mock";
 import { Tab } from "../tab/Tab";
+import { ProgressBar } from "../progressBar/ProgressBar";
 
 export const RestaurantPage = () => {
   const [displayRestaurantId, setDisplayRestaurantId] = useState(
@@ -24,8 +25,9 @@ export const RestaurantPage = () => {
         />
       ))}
       <TitleCafe name={displayRestaurant.name} />
-      <Menu menu={displayRestaurant.menu} />
+      <Menu key={displayRestaurant.id} menu={displayRestaurant.menu} />
       <Reviews reviews={displayRestaurant.reviews} />
+      <ProgressBar />
     </div>
   );
 };

@@ -1,16 +1,15 @@
+import styles from "./progressBar.module.css";
+import classNames from "classnames";
 import { useProgressBar } from "./useProgressBar";
+
 export const ProgressBar = () => {
   const progressBar = useProgressBar();
 
   return (
-    <div
+    <div className={classNames(styles.progressBar)}
       style={{
         width: progressBar,
-        position: "fixed",
-        top: 0,
-        left: 0,
-        height: "10px",
-        backgroundColor: "red",
+
       }}
     />
   );
