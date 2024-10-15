@@ -1,5 +1,7 @@
 export const Tab = ({ titleTab, isActiv, onClick }) => {
-  <button disabled={isActiv} onClick={onClick}>
-    {titleTab}
-  </button>;
+  return (
+    <button disabled={isActiv} onClick={onClick}>
+      {titleTab}
+    </button>
+  );
 };

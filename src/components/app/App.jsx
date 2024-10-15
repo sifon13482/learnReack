@@ -1,11 +1,13 @@
-import { Restaurants } from "../restaurants/Restaurants";
+// import { Restaurants } from "../restaurants/Restaurants";
+import { RestaurantPage  } from "../restaurants/RestaurantPage";
+
 import { Layout } from "../layout/Layout";
 
 export const App = () => {
   return (
     <div>
       <Layout>
-        <Restaurants />
+        <RestaurantPage />
       </Layout>
     </div>
   );

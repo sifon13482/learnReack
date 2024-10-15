@@ -1,7 +1,10 @@
 import { DishCounter } from "../dishCounter/DishCounter";
 
 export const Menu = ({ menu }) => {
-  return (
+
+  // return <h1>{menu}</h1>;
+
+    return (
     <div>
       <h3>Меню</h3>
       <ul>
@@ -12,5 +15,5 @@ export const Menu = ({ menu }) => {
         ))}
       </ul>
     </div>
-  );
+  ); 
 };

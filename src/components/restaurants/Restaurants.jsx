@@ -11,7 +11,7 @@ export const Restaurants = ({ name, menu, reviews }) => {
       {/* {restaurants.map(({ name, menu, reviews }) => ())} */}
       <div>
         <TitleCafe name={name} />
-        <Menu menu={123} />
+        <Menu menu={menu} />
         <Reviews reviews={reviews} />
       </div>
       <ProgressBar />
