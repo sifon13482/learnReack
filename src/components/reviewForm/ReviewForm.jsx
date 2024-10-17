@@ -42,7 +42,8 @@ export const ReviewForm = () => {
         />
       </div>
       <div className={styles.inputbox}>
-        <input type="button" value="Очистить" onClick={() => doCleanForm()} />
+        <button className={styles.button} onClick={doCleanForm}>Очистить</button>
+        {/* <input type="button" value="Очистить"  /> */}
       </div>
     </form>
   );
