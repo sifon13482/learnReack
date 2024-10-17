@@ -1,16 +1,18 @@
+import styles from "./menu.module.css";
 import { DishCounter } from "../dishCounter/DishCounter";
 
 export const Menu = ({ menu }) => {
-  return (
-    <div>
-      <h3>Меню</h3>
-      <ul>
+
+    return (
+    <div className={styles.menu}>
+      <h3 className={styles.title}>Меню</h3>
+      <ul className={styles.list}>
         {menu.map((dish) => (
-          <li>
+          <li className={styles.listItem}>
             {dish.name} <DishCounter />
           </li>
         ))}
       </ul>
     </div>
-  );
+  ); 
 };

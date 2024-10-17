@@ -49,20 +49,20 @@ export const useForm = () => {
   const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
   const { name, reviews, rating } = form;
 
-  const setName = (value) => {
-    dispatch({ type: SET_NAME_ACTION_TYPE, payload: value });
+  const setName = () => {
+    dispatch({ type: SET_NAME_ACTION_TYPE });
   };
-  const setReview = (value) => {
-    dispatch({ type: SET_REVIEW_ACTION_TYPE, payload: value });
+  const setReview = () => {
+    dispatch({ type: SET_REVIEW_ACTION_TYPE });
   };
-  const incrementRating = (value) => {
-    dispatch({ type: INCREMENT_SET_RETING_ACTION_TYPE, payload: value });
+  const incrementRating = () => {
+    dispatch({ type: INCREMENT_SET_RETING_ACTION_TYPE });
   };
-  const decrementRating = (value) => {
-    dispatch({ type: DECREMENT_SET_RETING_ACTION_TYPE, payload: value });
+  const decrementRating = () => {
+    dispatch({ type: DECREMENT_SET_RETING_ACTION_TYPE});
   };
-  const doCleanForm = (value) => {
-    dispatch({ type: DO_CLEAN_FORM_ACTION_TYPE, payload: value });
+  const doCleanForm = () => {
+    dispatch({ type: DO_CLEAN_FORM_ACTION_TYPE });
   };
 
   return {
