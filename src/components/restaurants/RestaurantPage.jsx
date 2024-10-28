@@ -24,10 +24,10 @@ export const RestaurantPage = () => {
           onClick={() => setDisplayRestaurantId(id)}
         />
       ))}
-      <TitleCafe name={displayRestaurant.name} />
-      <Menu key={displayRestaurant.id} menu={displayRestaurant.menu} />
-      <Reviews reviews={displayRestaurant.reviews} />
-      <ProgressBar />
+        <TitleCafe name={displayRestaurant.name} />
+        <Menu key={displayRestaurant.id} menu={displayRestaurant.menu} />
+        <Reviews reviews={displayRestaurant.reviews} />
+        <ProgressBar />
     </div>
   );
 };

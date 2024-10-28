@@ -1,7 +1,10 @@
 import styles from "./reviews.module.css";
 import { ReviewForm } from "../reviewForm/ReviewForm";
+import { useLogin } from "../context/loginContext/useLogin";
 
 export const Reviews = ({ reviews }) => {
+  const { currentUserName } = useLogin();
+
   if (!reviews.length) return null;
 
   return (
@@ -14,7 +17,7 @@ export const Reviews = ({ reviews }) => {
           ))}
         </ul>
       </div>
-      <ReviewForm />
+      {currentUserName && <ReviewForm />}
     </div>
   );
 };

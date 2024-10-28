@@ -6,11 +6,14 @@
   text-align: center;
   text-decoration: none;
   outline: none;
-  color: #fff;
+  color: #e0dede;
   background-color: #04aa6d;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  margin: 4px 2px;
 }
 .tab:active {
   background-color: #3e8e41;
