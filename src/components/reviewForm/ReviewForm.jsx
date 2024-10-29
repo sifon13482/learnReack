@@ -45,7 +45,6 @@ export const ReviewForm = () => {
         <button className={styles.button} onClick={doCleanForm}>
           Очистить
         </button>
-        {/* <input type="button" value="Очистить"  /> */}
       </div>
     </form>
   );

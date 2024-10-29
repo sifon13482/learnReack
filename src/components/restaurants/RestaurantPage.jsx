@@ -1,10 +1,7 @@
-import { Menu } from "../menu/Menu";
-import { Reviews } from "../reviews/Reviews";
-import { TitleCafe } from "../titleCafe/TitleCafe";
 import { useState } from "react";
 import { restaurants } from "../../constants/mock";
 import { Tab } from "../tab/Tab";
-import { ProgressBar } from "../progressBar/ProgressBar";
+import { Restaurant } from "./Restaurant";
 
 export const RestaurantPage = () => {
   const [displayRestaurantId, setDisplayRestaurantId] = useState(
@@ -24,10 +21,12 @@ export const RestaurantPage = () => {
           onClick={() => setDisplayRestaurantId(id)}
         />
       ))}
-        <TitleCafe name={displayRestaurant.name} />
-        <Menu key={displayRestaurant.id} menu={displayRestaurant.menu} />
-        <Reviews reviews={displayRestaurant.reviews} />
-        <ProgressBar />
+      <Restaurant
+        name={displayRestaurant.name}
+        key={displayRestaurant.id}
+        menu={displayRestaurant.menu}
+        reviews={displayRestaurant.reviews}
+      />
     </div>
   );
 };

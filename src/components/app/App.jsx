@@ -4,12 +4,10 @@ import { LoginContextProvider } from "../context/loginContext/LoginContextProvid
 
 export const App = () => {
   return (
-    <div>
       <LoginContextProvider>
         <Layout>
           <RestaurantPage />
         </Layout>
       </LoginContextProvider>
-    </div>
   );
 };
