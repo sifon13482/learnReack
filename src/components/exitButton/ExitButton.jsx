@@ -2,13 +2,16 @@ import { useLogin } from "../context/loginContext/useLogin";
 import { NavBarMenuButton } from "../navBarMenuButton/NavBarMenuButton";
 
 export const ExitButton = () => {
-  const { loginUser } = useLogin();
+  const { loginUser, currentUserName } = useLogin();
+
   return (
-    <NavBarMenuButton
-      title={"Exit"}
-      onClick={() => {
-        loginUser("");
-      }}
-    />
+    currentUserName && (
+      <NavBarMenuButton
+        title={"Exit"}
+        onClick={() => {
+          loginUser("");
+        }}
+      />
+    )
   );
 };
