@@ -1,5 +1,6 @@
 import { useForm } from "./useForm";
 import { Counter } from "../counter/Counter";
+import styles from "./reviewForm.module.css";
 
 export const ReviewForm = () => {
   const {
@@ -14,43 +15,37 @@ export const ReviewForm = () => {
   } = useForm();
   return (
     <form onSubmit={(event) => event.preventDefault()}>
-      <div>
-        <i>Имя</i>
+      <div className={styles.inputbox}>
         <input
+          required="required"
           type="text"
           value={name}
-          onChange={(event) => {
-            setName(event.target.value);
-          }}
+          onChange={() => setName()}
         />
+        <span>Имя</span>
       </div>
-      <div>
-        <i>Текст</i>
+      <div className={styles.inputbox}>
         <input
+          required="required"
           type="text"
           value={reviews}
-          onChange={(event) => {
-            setReview(event.target.value);
-          }}
+          onChange={() => setReview()}
         />
+        <span>Текст</span>
       </div>
       <div>
-        <i>
-          Рейтинг
-          <Counter
-            value={rating}
-            increment={incrementRating}
-            decrement={decrementRating}
-          />
-        </i>
+        <span className={styles.rating}>Рейтинг</span>
+        <Counter
+          value={rating}
+          increment={incrementRating}
+          decrement={decrementRating}
+        />
       </div>
-      <button
-        onClick={(event) => {
-          doCleanForm(event.target.value);
-        }}
-      >
-        Очистить
-      </button>
+      <div className={styles.inputbox}>
+        <button className={styles.button} onClick={doCleanForm}>
+          Очистить
+        </button>
+      </div>
     </form>
   );
 };

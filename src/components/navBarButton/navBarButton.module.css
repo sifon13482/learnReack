@@ -1,0 +1,8 @@
+.navButtonLight {
+  background-color: #e8e7e9;
+  color: #307707;
+}
+.navButtonLight:hover {
+  background-color: #89a389;
+  color: rgb(37, 5, 5);
+}

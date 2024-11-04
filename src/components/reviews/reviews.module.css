@@ -1,0 +1,29 @@
+.reviews {
+  width: 500px;
+  margin: 5px 0px 15px 10px;
+  border-top-style: dotted;
+  border-top-color: #c4eee5;
+  border-bottom-style: dotted;
+  border-bottom-color: #c4eee5;
+}
+
+.title {
+  font-size: 24px;
+  margin: 5px 0px 5px 30px;
+}
+.list {
+  font-size: 18px;
+  list-style-type: decimal;
+  margin: 0;
+  padding: 0;
+  padding: 0px;
+}
+
+.listItem {
+  width: 30%;
+  color: rgb(39, 10, 2);
+  padding: 5px;
+  margin: 5px 0px 15px 10px;
+}
+
+
