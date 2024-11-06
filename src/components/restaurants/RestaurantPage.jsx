@@ -2,7 +2,10 @@ import { useState } from "react";
 import { Tab } from "../tab/Tab";
 import { Restaurant } from "./Restaurant";
 import { useSelector } from "react-redux";
-import { selectRestaurants, selectRestaurantsIds } from "../../redux/restaurants";
+import {
+  selectRestaurants,
+  selectRestaurantsIds,
+} from "../../redux/restaurants";
 
 export const RestaurantPage = () => {
   const restaurantsId = useSelector(selectRestaurantsIds);
@@ -14,13 +17,13 @@ export const RestaurantPage = () => {
 
   return (
     <div>
-      {restaurantsId.map(( nameId ) => (
-        <Tab
-          key={nameId}
-          titleTab={restaurants[nameId].name} 
-          isActiv={displayRestaurantId === nameId}
-          onClick={() => setDisplayRestaurantId(nameId)}
-        />
+      {restaurantsId.map((restaurantId) => (
+          <Tab
+            key={restaurantId}
+            titleTab={restaurants[restaurantId].name}
+            isActive={displayRestaurantId === restaurantId}
+            onClick={() => setDisplayRestaurantId(restaurantId)}
+          />
       ))}
       <Restaurant id={displayRestaurantId} key={displayRestaurantId} />
     </div>

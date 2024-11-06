@@ -11,7 +11,7 @@ export const Restaurant = ({ id }) => {
   return (
     <div>
       <TitleCafe name={restaurant.name} />
-      <Menu key={id} dishesId={restaurant.menu} />
+      <Menu key={id} dishesIds={restaurant.menu} />
       <Reviews reviewsId={restaurant.reviews} />
     </div>
   );

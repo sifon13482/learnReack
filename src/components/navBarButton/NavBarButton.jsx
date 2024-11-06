@@ -2,7 +2,7 @@ import styles from "./navBarButton.module.css";
 import classNames from "classnames";
 import { useTheme } from "../context/themeContext/useTheme";
 
-export const NavBarButton = ({ title, isActiv, onClick, className }) => {
+export const NavBarButton = ({ title, isActive, onClick, className }) => {
   const { theme } = useTheme();
 
   return (
@@ -10,7 +10,7 @@ export const NavBarButton = ({ title, isActiv, onClick, className }) => {
       className={classNames(className, {
         [styles.navButtonLight]: theme === "light",
       })}
-      disabled={isActiv}
+      disabled={isActive}
       onClick={onClick}
     >
       {title}
