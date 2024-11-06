@@ -1,32 +1,31 @@
 import { useState } from "react";
-import { restaurants } from "../../constants/mock";
 import { Tab } from "../tab/Tab";
 import { Restaurant } from "./Restaurant";
+import { useSelector } from "react-redux";
+import {
+  selectRestaurants,
+  selectRestaurantsIds,
+} from "../../redux/restaurants";
 
 export const RestaurantPage = () => {
+  const restaurantsId = useSelector(selectRestaurantsIds);
+  const restaurants = useSelector(selectRestaurants);
+
   const [displayRestaurantId, setDisplayRestaurantId] = useState(
-    restaurants[0].id
-  );
-  const displayRestaurant = restaurants.find(
-    ({ id }) => id === displayRestaurantId
+    restaurantsId[0]
   );
 
   return (
     <div>
-      {restaurants.map(({ name, id }) => (
-        <Tab
-          key={id}
-          titleTab={name}
-          isActiv={displayRestaurantId === id}
-          onClick={() => setDisplayRestaurantId(id)}
-        />
+      {restaurantsId.map((restaurantId) => (
+          <Tab
+            key={restaurantId}
+            titleTab={restaurants[restaurantId].name}
+            isActive={displayRestaurantId === restaurantId}
+            onClick={() => setDisplayRestaurantId(restaurantId)}
+          />
       ))}
-      <Restaurant
-        name={displayRestaurant.name}
-        key={displayRestaurant.id}
-        menu={displayRestaurant.menu}
-        reviews={displayRestaurant.reviews}
-      />
+      <Restaurant id={displayRestaurantId} key={displayRestaurantId} />
     </div>
   );
 };

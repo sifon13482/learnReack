@@ -1,14 +1,18 @@
 import { Menu } from "../menu/Menu";
 import { Reviews } from "../reviews/Reviews";
 import { TitleCafe } from "../titleCafe/TitleCafe";
-import { Tab } from "../tab/Tab";
+import { useSelector } from "react-redux";
+import { selectRestaurantsById } from "../../redux/restaurants";
 
-export const Restaurant = ({name, menu, id, reviews}) => {
+export const Restaurant = ({ id }) => {
+  const restaurant = useSelector((state) => 
+    selectRestaurantsById(state, id));
+
   return (
     <div>
-      <TitleCafe name={name} />
-      <Menu key={id} menu={menu} />
-      <Reviews reviews={reviews} />
+      <TitleCafe name={restaurant.name} />
+      <Menu key={id} dishesIds={restaurant.menu} />
+      <Reviews reviewsId={restaurant.reviews} />
     </div>
   );
-}
+};

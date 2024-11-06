@@ -1,3 +1,4 @@
+import { Cart } from "../cart/Cart";
 import { ToggleThemeButton } from "../context/themeContext/ToggleThemeButton";
 import { ExitButton } from "../exitButton/ExitButton";
 import { LoginButton } from "../loginButton/LoginButton";
@@ -10,6 +11,7 @@ export const Header = () => {
       <LoginButton />
       <ExitButton />
       <UserName />
+      <Cart />
     </header>
   );
 };

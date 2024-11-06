@@ -1,17 +1,15 @@
 import styles from "./menu.module.css";
-import { DishCounter } from "../dishCounter/DishCounter";
-import { useLogin } from "../context/loginContext/useLogin";
+import { Dish } from "../dish/dish";
 
-export const Menu = ({ menu }) => {
-  const { currentUserName } = useLogin();
+export const Menu = ({ dishesIds }) => {
 
   return (
     <div className={styles.menu}>
       <h3 className={styles.title}>Меню</h3>
       <ul className={styles.list}>
-        {menu.map((dish) => (
+        {dishesIds.map((dishId) => (
           <li className={styles.listItem}>
-            {dish.name} {currentUserName && <DishCounter />}
+            <Dish dishId={dishId} />
           </li>
         ))}
       </ul>
