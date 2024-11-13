@@ -1,11 +1,12 @@
+import { Outlet } from "react-router-dom";
 import { Header } from "../header/Header";
 import { ProgressBar } from "../progressBar/ProgressBar";
 
-export const Layout = ({ children }) => {
+export const Layout = () => {
   return (
     <div>
       <Header />
-      {children}
+      <Outlet />
       <ProgressBar />
       <footer></footer>
     </div>

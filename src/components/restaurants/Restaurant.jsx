@@ -1,18 +1,13 @@
-import { Menu } from "../menu/Menu";
-import { Reviews } from "../reviews/Reviews";
 import { TitleCafe } from "../titleCafe/TitleCafe";
-import { useSelector } from "react-redux";
-import { selectRestaurantsById } from "../../redux/restaurants";
+import { Link, Outlet } from "react-router-dom";
 
-export const Restaurant = ({ id }) => {
-  const restaurant = useSelector((state) => 
-    selectRestaurantsById(state, id));
-
+export const Restaurant = ({ name }) => {
   return (
     <div>
-      <TitleCafe name={restaurant.name} />
-      <Menu key={id} dishesIds={restaurant.menu} />
-      <Reviews reviewsId={restaurant.reviews} />
+      <TitleCafe name={name} />
+      <Link to={`menu`}>Menu</Link>
+      <Link to={`reviews`}> Reviews</Link>
+      <Outlet />
     </div>
   );
 };
