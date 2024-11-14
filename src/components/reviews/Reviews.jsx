@@ -3,10 +3,10 @@ import { ReviewForm } from "../reviewForm/ReviewForm";
 import { useLogin } from "../context/loginContext/useLogin";
 import { useSelector } from "react-redux";
 import { selectReviews } from "../../redux/reviews";
-import { useRestaurantLink } from "../useRestaurantLink/useRestaurantLink";
+import { useRestaurantIdFromURL } from "../useRestaurantLink/useRestaurantLink";
 
 export const Reviews = () => {
-  const { reviews } = useRestaurantLink();
+  const { reviews } = useRestaurantIdFromURL();
 
   const { currentUserName } = useLogin();
   const reviewsArr = useSelector(selectReviews);

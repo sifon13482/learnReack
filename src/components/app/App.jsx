@@ -50,7 +50,6 @@ export const App = () => {
       <LoginContextProvider>
         <ThemeContextProvider>
           <RouterProvider router={router}>
-            <Layout></Layout>
           </RouterProvider>
         </ThemeContextProvider>
       </LoginContextProvider>

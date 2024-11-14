@@ -1,11 +1,11 @@
 import styles from "./menu.module.css";
-import { useRestaurantLink } from "../useRestaurantLink/useRestaurantLink";
+import { useRestaurantIdFromURL } from "../useRestaurantLink/useRestaurantLink";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectDishes } from "../../redux/dishes";
 
 export const Menu = () => {
-  const { menu } = useRestaurantLink();
+  const { menu } = useRestaurantIdFromURL();
   const dishes = useSelector(selectDishes);
 
   return (

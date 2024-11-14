@@ -1,8 +1,8 @@
 import { Restaurant } from "../restaurants/Restaurant";
-import { useRestaurantLink } from "../useRestaurantLink/useRestaurantLink";
+import { useRestaurantIdFromURL } from "../useRestaurantLink/useRestaurantLink";
 
 export const RestaurantContainer = () => {
-  const { name, menu, reviews } = useRestaurantLink();
+  const { name, menu, reviews } = useRestaurantIdFromURL();
 
   return <Restaurant name={name} menu={menu} reviews={reviews} />;
 };
