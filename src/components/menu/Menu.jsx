@@ -13,9 +13,8 @@ export const Menu = () => {
       <h3 className={styles.title}>Меню</h3>
       <ul className={styles.list}>
         {menu.map((dishId) => (
-          <li className={styles.listItem}>
+          <li className={styles.listItem} key={dishId}>
             <Link to={`/dish/${dishId}`}>{dishes[dishId].name}</Link>
-            {console.log(menu)}
           </li>
         ))}
       </ul>

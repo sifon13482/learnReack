@@ -18,7 +18,9 @@ export const Reviews = () => {
         <h3 className={styles.title}>Отзывы</h3>
         <ul className={styles.list}>
           {reviews.map((commentId) => (
-            <li className={styles.listItem}>{reviewsArr[commentId].text}</li>
+            <li className={styles.listItem} key={commentId}>
+              {reviewsArr[commentId].text}
+            </li>
           ))}
         </ul>
       </div>
