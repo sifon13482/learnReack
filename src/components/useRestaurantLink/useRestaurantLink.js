@@ -6,12 +6,13 @@ import { getRestaurants } from "../../redux/restaurants/getRestaurants";
 
 
 export const useRestaurantIdFromURL = () => {
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(getRestaurants())
-    }, [dispatch])
-
     const { restaurantsId } = useParams();
+
+    // const dispatch = useDispatch()
+    // useEffect(() => {
+    //     dispatch(getRestaurants())
+    // }, [dispatch])
+
     console.log(restaurantsId);
 
 
@@ -19,6 +20,7 @@ export const useRestaurantIdFromURL = () => {
     const restaurantItem = useSelector((state) =>
         selectRestaurantsById(state, restaurantsId)
     );
+
     console.log(restaurantItem);
     return (restaurantItem);
 };

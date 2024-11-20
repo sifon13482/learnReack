@@ -1,16 +1,17 @@
-import { useDispatch } from "react-redux";
 import { Restaurant } from "../restaurants/Restaurant";
 import { useRestaurantIdFromURL } from "../useRestaurantLink/useRestaurantLink";
-import { useEffect } from "react";
-import { getRestaurants } from "../../redux/restaurants/getRestaurants";
 
 export const RestaurantContainer = () => {
-  const dispatch = useDispatch()
-  useEffect(() => {
-      dispatch(getRestaurants())
-  }, [dispatch])
-  console.log(useRestaurantIdFromURL())
   const { name, menu, reviews } = useRestaurantIdFromURL();
+  // if(!name || !menu || !reviews) return null
+
 
   return <Restaurant name={name} menu={menu} reviews={reviews} />;
+  // return (
+  //   <Restaurant
+  //     name={restaurantItem.name}
+  //     menu={restaurantItem.menu}
+  //     reviews={restaurantItem.reviews}
+  //   />
+  // );
 };

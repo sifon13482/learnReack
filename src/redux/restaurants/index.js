@@ -1,15 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { getRestaurants } from "./getRestaurants";
+import { getRestaurantId } from "./getRestaurantId";
 
-const initialState = {
-    entities: {},
-    ids: [],
-    requestStatus: "idle",
-};
+const entityAdapter = createEntityAdapter()
 
 export const restaurantsSlice = createSlice({
     name: "restaurants",
-    initialState,
+    initialState: entityAdapter.getInitialState({ requestStatus: "idle" }),
     selectors: {
         selectRestaurantsIds: (state) => state.ids,
         selectRestaurantsById: (state, id) => state.entities[id],
@@ -23,19 +20,26 @@ export const restaurantsSlice = createSlice({
 
             })
             .addCase(getRestaurants.fulfilled, (state, { payload }) => {
-                state.entities = payload.reduce((acc, item) => {
-                    acc[item.id] = item;
-
-                    return acc;
-                }, {}),
-
-                    state.ids = payload.map(({ id }) => id),
-                    state.requestStatus = "fulfilled";
+                entityAdapter.setAll(state, payload);
+                state.requestStatus = "fulfilled";
             })
             .addCase(getRestaurants.rejected, (state) => {
                 state.requestStatus = "rejected";
 
             })
+            // .addCase(getRestaurantId.pending, (state) => {
+            //     state.requestStatus = "pending";
+
+            // })
+            // .addCase(getRestaurantId.fulfilled, (state, { payload }) => {
+            //     entityAdapter.setOne(state, payload);
+            //     state.requestStatus = "fulfilled";
+            // })
+            // .addCase(getRestaurantId.rejected, (state) => {
+            //     state.requestStatus = "rejected";
+
+            // })
+
 });
 
 export const {
