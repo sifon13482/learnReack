@@ -6,8 +6,8 @@ import { ThemeContextProvider } from "../context/themeContext/ThemeContextProvid
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RestaurantsNavBarMenu } from "../restaurantsNavBarMenu/RrestaurantsNavBaMenu";
 import { RestaurantPage } from "../rastaurantPage/RestaurantPage";
-import { Menu } from "../menu/Menu";
-import { Reviews } from "../reviews/Reviews";
+import { MenuPage } from "../menuPage/MenuPage";
+import { ReviewsPage } from "../reviewsPage/ReviewsPage";
 import { Dish } from "../dish/dish";
 
 const router = createBrowserRouter([
@@ -20,16 +20,16 @@ const router = createBrowserRouter([
         element: <RestaurantsNavBarMenu />,
         children: [
           {
-            path: ":restaurantsId",
+            path: ":restaurantId",
             element: <RestaurantPage />,
             children: [
               {
                 path: "menu",
-                element: <Menu />,
+                element: <MenuPage />,
               },
               {
                 path: "reviews",
-                element: <Reviews />,
+                element: <ReviewsPage />,
               },
             ],
           },

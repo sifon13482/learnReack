@@ -1,26 +1,30 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { selectRestaurantsById } from "../../redux/restaurants";
+import { selectRestaurantsById, selectRestaurantsRequstStatus } from "../../redux/restaurants";
 import { useEffect } from "react";
-import { getRestaurants } from "../../redux/restaurants/getRestaurants";
+import { getRestaurantId } from "../../redux/restaurantId/getRestaurantId";
 
 
 export const useRestaurantIdFromURL = () => {
     const { restaurantsId } = useParams();
 
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //     dispatch(getRestaurants())
-    // }, [dispatch])
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getRestaurantId(restaurantsId))
+    }, [dispatch, restaurantsId])
 
-    console.log(restaurantsId);
-
-
-
+    const requestStatus = useSelector(selectRestaurantsRequstStatus)
     const restaurantItem = useSelector((state) =>
         selectRestaurantsById(state, restaurantsId)
     );
-
-    console.log(restaurantItem);
-    return (restaurantItem);
+    if (requestStatus === "idle") {
+        return "idle"
+    };
+    if (requestStatus === "pending") {
+        return "pending"
+    };
+    if (requestStatus === "fulfilled") {
+        console.log("restaurantItem", restaurantItem)
+        return restaurantItem;
+    }
 };

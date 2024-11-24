@@ -1,21 +1,35 @@
-import { useDispatch, useSelector } from "react-redux";
-import { RestaurantContainer } from "../restaurantContainer/RestaurantContainer";
+import { Restaurant } from "../restaurants/Restaurant";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getRestaurants } from "../../redux/restaurants/getRestaurants";
-import { selectRestaurantsById } from "../../redux/restaurants";
+import { getRestaurantId } from "../../redux/restaurantId/getRestaurantId";
+import {
+  selectRestaurantsById,
+  selectRestaurantsRequstStatus,
+} from "../../redux/restaurants";
 
 export const RestaurantPage = () => {
-  const { restaurantsId } = useParams();
+  const { restaurantId } = useParams();
+
   // const dispatch = useDispatch();
   // useEffect(() => {
-  //   dispatch(getRestaurants());
-  // }, [dispatch]);
+  //   dispatch(getRestaurantId(restaurantId));
+  // }, [dispatch, restaurantId]);
 
+  const requestStatus = useSelector(selectRestaurantsRequstStatus);
   const restaurantItem = useSelector((state) =>
-    selectRestaurantsById(state, restaurantsId)
+    selectRestaurantsById(state, restaurantId)
   );
-  console.log("restaurantItem", restaurantItem);
-
-  return <RestaurantContainer id={restaurantsId} />;
+  if (requestStatus === "pending" || requestStatus === "idle") {
+    return <div>LOADING RestaurantPage</div>;
+  }
+  if (requestStatus === "fulfilled") {
+    return (
+      <Restaurant
+        name={restaurantItem.name}
+        menu={restaurantItem.menu}
+        reviews={restaurantItem.reviews}
+      />
+    );
+  }
 };

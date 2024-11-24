@@ -10,26 +10,27 @@ import { useEffect } from "react";
 import { getRestaurants } from "../../redux/restaurants/getRestaurants";
 
 export const RestaurantsNavBarMenu = () => {
-  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRestaurants());
   }, [dispatch]);
 
-  const restaurantsId = useSelector(selectRestaurantsIds);
+  const requestStatus = useSelector(selectRestaurantsRequstStatus);
+  const restaurantsIds = useSelector(selectRestaurantsIds);
   const restaurants = useSelector(selectRestaurants);
-  const requestStatus = useSelector(selectRestaurantsRequstStatus)
 
-  // if (requestStatus === "idle" || requestStatus === "loading") {
-  //   return console.log("loading")
-  // }
+  if (requestStatus === "pending" || requestStatus === "idle") {
+    return <div>LOADING RestaurantsNavBarMenu</div>;
+  }
 
-  return (
-    <div>
-      {restaurantsId.map((id) => (
-        <Tab id={id} key={id} titleTab={restaurants[id].name} />
-      ))}
-      <Outlet />
-    </div>
-  );
+  if (requestStatus === "fulfilled") {
+    return (
+      <div>
+        {restaurantsIds.map((id) => (
+          <Tab id={id} key={id} titleTab={restaurants[id].name} />
+        ))}
+        <Outlet />
+      </div>
+    );
+  }
 };
