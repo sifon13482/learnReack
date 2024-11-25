@@ -1,8 +1,8 @@
 import { Restaurant } from "../restaurants/Restaurant";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getRestaurantId } from "../../redux/restaurantId/getRestaurantId";
+import { /* useDispatch, */ useSelector } from "react-redux";
+// import { useEffect } from "react";
+// import { getRestaurantId } from "../../redux/restaurantId/getRestaurantId";
 import {
   selectRestaurantsById,
   selectRestaurantsRequstStatus,
@@ -17,19 +17,13 @@ export const RestaurantPage = () => {
   // }, [dispatch, restaurantId]);
 
   const requestStatus = useSelector(selectRestaurantsRequstStatus);
-  const restaurantItem = useSelector((state) =>
+  const { name } = useSelector((state) =>
     selectRestaurantsById(state, restaurantId)
   );
   if (requestStatus === "pending" || requestStatus === "idle") {
     return <div>LOADING RestaurantPage</div>;
   }
   if (requestStatus === "fulfilled") {
-    return (
-      <Restaurant
-        name={restaurantItem.name}
-        menu={restaurantItem.menu}
-        reviews={restaurantItem.reviews}
-      />
-    );
+    return <Restaurant name={name} />;
   }
 };

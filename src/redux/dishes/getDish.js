@@ -6,10 +6,10 @@ export const getDish = createAsyncThunk(
         const response = await fetch(`http://localhost:3001/api/dish/${dishId}`);
         const result = await response.json();
 
-        if (!result.length) {
-            rejectWithValue("no DATA")
-            return
-        };
+        // if (!result.length) {
+        //     rejectWithValue("no DATA")
+        //     return
+        // };
 
         return result;
     },

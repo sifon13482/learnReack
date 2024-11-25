@@ -1,10 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectDishes, selectDishesRequstStatus } from "../../redux/dishes";
+import {
+  selectDishes,
+  selectDishesBiId,
+  selectDishesRequstStatus,
+} from "../../redux/dishes";
 import { useLogin } from "../context/loginContext/useLogin";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { getDish } from "../../redux/dish/getDish";
+// import { getDish } from "../../redux/dish/getDish";
 import { DishCounter } from "../dishCounter/DishCounter";
+import { getDish } from "../../redux/dishes/getDish";
 
 export const Dish = () => {
   const { dishId } = useParams();
@@ -15,26 +20,30 @@ export const Dish = () => {
     dispatch(getDish(dishId));
   }, [dispatch, dishId]);
 
-  // const requestStatus = useSelector(selectDishRequstStatus);
-  // const dish = useSelector(selectDish);
+   const requestStatus = useSelector(selectDishesRequstStatus);
+  const dish = useSelector((state) => selectDishesBiId(state, dishId));
 
-  const requestStatus = useSelector(selectDishesRequstStatus);
-  const dishes = useSelector(selectDishes);
-
-  if (requestStatus === "rejected") {
+  if (requestStatus === "rejectedDish" || requestStatus === "idle") {
     return <div>ERROR Dish</div>;
   }
-  if (requestStatus === "pending" || requestStatus === "idle") {
+  console.log(requestStatus);
+
+  if (requestStatus === "pendingDish") {
     return <div>LOADING Dish</div>;
   }
-  return (
-    <div>
-      name: {dishes[dishId].name}
-      <br></br>
-      price: {dishes[dishId].price}
-      <br></br>
-      ingredients: {dishes[dishId].ingredients}
-      {currentUserName && <DishCounter id={dishes[dishId].id} />}
-    </div>
-  );
+  console.log(dish);
+  console.log(requestStatus);
+
+  if (requestStatus === "fulfilledDish") {
+    return (
+      <div>
+        name: {dish.name}
+        <br></br>
+        price: {dish.price}
+        <br></br>
+        ingredients: {dish.ingredients}
+        {currentUserName && <DishCounter id={dish.id} />}
+      </div>
+    );
+  }
 };
