@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 import { getDishes } from "./getDishes";
-import { getDish } from "./getDish";
+import { getDishById } from "./getDish";
 
 const entityAdapter = createEntityAdapter();
 
@@ -9,7 +9,7 @@ export const dishesSlice = createSlice({
     initialState: entityAdapter.getInitialState({ requestStatus: "idle" }),
     selectors: {
         selectDishes: (state) => state.entities,
-        selectDishesBiId: (state, id) => state.entities[id],
+        selectDishesById: (state, id) => state.entities[id],
         selectDishesRequstStatus: (state) => state.requestStatus,
     },
     extraReducers: (builder) =>
@@ -24,18 +24,18 @@ export const dishesSlice = createSlice({
             .addCase(getDishes.rejected, (state) => {
                 state.requestStatus = "rejected";
             })
-            .addCase(getDish.pending, (state) => {
+            .addCase(getDishById.pending, (state) => {
                 state.requestStatus = "pendingDish";
             })
-            .addCase(getDish.fulfilled, (state, { payload }) => {
-                entityAdapter.updateOne(state, payload);
+            .addCase(getDishById.fulfilled, (state, { payload }) => {
+                entityAdapter.setOne(state, payload);
                 state.requestStatus = "fulfilledDish";
             })
-            .addCase(getDish.rejected, (state) => {
+            .addCase(getDishById.rejected, (state) => {
                 state.requestStatus = "rejected";
             })
 });
 
 export const {
-    selectDishes, selectDishesBiId, selectDishesRequstStatus
+    selectDishes, selectDishesById, selectDishesRequstStatus
 } = dishesSlice.selectors;

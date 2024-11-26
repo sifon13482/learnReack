@@ -1,9 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { selectReviews } from ".";
 
 export const getReviews = createAsyncThunk(
     "reviews/getReviews",
-    async (restaurantId, { dispatch, getState, rejectWithValue }) => {
+    async (restaurantId, { rejectWithValue }) => {
         const response = await fetch(`http://localhost:3001/api/reviews?restaurantId=${restaurantId}`);
         const result = await response.json();
 
@@ -12,11 +11,6 @@ export const getReviews = createAsyncThunk(
             return
         };
         return result;
-    },
-    {
-        condition: (_, { getState }) => {
-            return selectReviews(getState()).length !== 0
-        }
     }
 )
 

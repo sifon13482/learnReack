@@ -1,20 +1,20 @@
 import { Restaurant } from "../restaurants/Restaurant";
 import { useParams } from "react-router-dom";
-import { /* useDispatch, */ useSelector } from "react-redux";
-// import { useEffect } from "react";
-// import { getRestaurantId } from "../../redux/restaurantId/getRestaurantId";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import {
   selectRestaurantsById,
   selectRestaurantsRequstStatus,
 } from "../../redux/restaurants";
+import { getRestaurantById } from "../../redux/restaurants/getRestaurants";
 
 export const RestaurantPage = () => {
   const { restaurantId } = useParams();
 
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getRestaurantId(restaurantId));
-  // }, [dispatch, restaurantId]);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getRestaurantById(restaurantId));
+  }, [dispatch, restaurantId]);
 
   const requestStatus = useSelector(selectRestaurantsRequstStatus);
   const { name } = useSelector((state) =>

@@ -3,7 +3,7 @@ import { selectRestaurantsById, selectRestaurantsIds } from ".";
 
 export const getRestaurants = createAsyncThunk(
     "restaurants/getRestaurants",
-    async (_, { getState, rejectWithValue }) => {
+    async (_, { rejectWithValue }) => {
         const response = await fetch("http://localhost:3001/api/restaurants");
         const result = await response.json();
 
@@ -23,7 +23,7 @@ export const getRestaurants = createAsyncThunk(
 
 export const getRestaurantById = createAsyncThunk(
     "restaurantId/getRestaurantId",
-    async (restaurantId, { getState, rejectWithValue }) => {
+    async (restaurantId, { rejectWithValue }) => {
         const response = await fetch(`http://localhost:3001//api/restaurant/${restaurantId}`);
         const result = await response.json();
 
@@ -36,7 +36,7 @@ export const getRestaurantById = createAsyncThunk(
     },
     {
         condition: (_, { getState }) => {
-            return selectRestaurantsById(getState()).length === 0
+            return selectRestaurantsById(getState()) !== undefined
         }
     }
 )
