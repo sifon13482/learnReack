@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { selectDishesBiId } from "../../redux/dishes";
+import { selectDishesById } from "../../redux/dishes";
 
 export const CartItem = ({ id, amount }) => {
   const { name } =
-    useSelector((state) => selectDishesBiId(state, id)) || {};
+    useSelector((state) => selectDishesById(state, id)) || {};
 
   if (!name) return null;
 
